@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d1a">
+  <title>Love Taxi 🚕 커플 미터기</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚕</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">🚕 LOVE TAXI</div>
+    <div id="surcharge-lamps" class="lamps"></div>
+  </header>
+
+  <main>
+    <!-- ① 미터 화면 -->
+    <section id="screen-meter" class="screen active">
+      <div class="meter-card">
+        <div id="reward-display" class="reward-display"></div>
+        <div class="meter-stats">
+          <div class="stat">
+            <span class="stat-label">경과 시간</span>
+            <span id="elapsed" class="led">00:00:00</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">이동 거리</span>
+            <span id="distance" class="led">0.00<small>km</small></span>
+          </div>
+        </div>
+        <div class="meter-sub">
+          <span id="mode-indicator" class="mode-chip">⏱ 시간 모드</span>
+          <span id="speed" class="speed">0 km/h</span>
+        </div>
+        <div class="progress-wrap">
+          <div id="progress-label" class="progress-label">요금표를 확인해 보세요</div>
+          <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+        </div>
+      </div>
+
+      <div id="manual-surcharges" class="manual-surcharges"></div>
+
+      <button id="btn-ride" class="btn-ride">🚕 탑승!</button>
+      <p id="ride-hint" class="hint"></p>
+
+      <div class="status-dots">
+        <span id="dot-wake" class="dot off">☀️ 화면유지</span>
+        <span id="dot-gps" class="dot off">📡 GPS</span>
+      </div>
+      <div id="banner" class="banner hidden"></div>
+    </section>
+
+    <!-- ② 영수증 화면 -->
+    <section id="screen-receipt" class="screen">
+      <div id="receipt-card" class="receipt-card"></div>
+      <div class="receipt-actions">
+        <button id="btn-share" class="btn-secondary hidden">📤 공유하기</button>
+        <button id="btn-receipt-close" class="btn-primary">닫기</button>
+      </div>
+      <p class="hint">📸 캡처해서 간직하세요</p>
+    </section>
+
+    <!-- ③ 기록 화면 -->
+    <section id="screen-history" class="screen">
+      <h2>🧾 지난 데이트</h2>
+      <ul id="history-list" class="history-list"></ul>
+    </section>
+
+    <!-- ④ 설정 화면 -->
+    <section id="screen-settings" class="screen">
+      <h2>⚙️ 설정</h2>
+      <div id="settings-form"></div>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-tab="meter" class="tab active">🚕<span>미터</span></button>
+    <button data-tab="history" class="tab">🧾<span>기록</span></button>
+    <button data-tab="settings" class="tab">⚙️<span>설정</span></button>
+  </nav>
+
+  <div id="modal-root" class="modal-root hidden"></div>
+  <div id="debug-panel" class="debug-panel hidden"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
